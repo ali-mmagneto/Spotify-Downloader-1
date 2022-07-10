@@ -58,7 +58,7 @@ async def spotify_dl(_,message):
                 thumbnail = await thumb_down(item[5],item[0])
                 sleeping  = await sleep(2.0)
                 DForChat =  await message.reply_chat_action("upload_audio")
-                #reply = await message.reply_text("Bölğm desteğini sildim..")
+                #reply = await message.reply_text("Bölüm desteğini sildim..")
                 AForCopy = await message.reply_audio(fileLink,title=item[3].replace("_"," "),performer="Spotify",duration=int(item[4]),caption=f"[{item[3]}](https://open.spotify.com/episode/{item[0]})",thumb=thumbnail,parse_mode="markdown",quote=True)
                 shutil.rmtree(randomdir)
                 if LOG_GROUP:
@@ -145,8 +145,6 @@ async def spotify_dl(_,message):
         K = await m.edit_text(e)
         H = await message.reply_text(f"tamamlandı✅",   
              reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="Error Detected", callback_data="bug")]]))
-        await message.reply_text(f"Saavn tipi /saavn music_name")
-        await forward(K,H)
 
 @Mbot.on_callback_query(filters.regex(r"feed"))
 async def feedback(_,query):
