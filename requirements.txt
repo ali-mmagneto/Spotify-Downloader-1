@@ -8,6 +8,7 @@ deezer-python
 spotipy
 psutil
 youtube-dl
+ffmpeg
 python-arq
 aiohttp
 eyed3
