@@ -83,7 +83,7 @@ class Mbot(Client):
         if not path.exists('/tmp/thumbnails/'):
             mkdir('/tmp/thumbnails/')
         for chat in AUTH_CHATS:
-            await self.send_photo(chat,"https://telegra.ph/file/05bd06a7a113aff8d24f2.jpg","**Spotify İndirici Bot Başlatıldı**")
+            await self.send_photo(chat,"https://telegra.ph/file/ef47a31de106b4e081499.jpg","**Spotify İndirici Bot Başlatıldı**")
         LOGGER.info(f"Bot Başlatıldı {BOT_INFO.username}\n")
     
     async def stop(self,*args):
