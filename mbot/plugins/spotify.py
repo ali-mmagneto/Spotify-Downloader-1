@@ -69,7 +69,7 @@ async def spotify_dl(_,message):
             song = await fetch_spotify_track(client,item_id)
             cForChat = await message.reply_chat_action("record_audio")
             #sleeeps = await sleep (0.9)
-            PForCopy = await message.reply_photo(song.get('cover'),caption=f"🎧 Title : `{song['name']}`\n🎤 Artist : `{song['artist']}`\n💽 Album : `{song['album']}`\n🎼 Genre : `{song['genre']}`\n🗓 Release Year: `{song['year']}`")
+            PForCopy = await message.reply_photo(song.get('cover'),caption=f"🎧 Başlık : `{song['name']}`\n🎤 Sanatçı : `{song['artist']}`\n💽 Album : `{song['album']}`\n🎼 Tür : `{song['genre']}`\n🗓 Yayın Yılı: `{song['year']}`")
             path = await download_songs(song,randomdir)
             thumbnail = await thumb_down(song.get('cover'),song.get('deezer_id'))
             dForChat = await message.reply_chat_action("upload_audio")
