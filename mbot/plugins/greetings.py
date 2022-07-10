@@ -75,7 +75,7 @@ async def help(_,message):
         [InlineKeyboardButton(text=i, callback_data=f"help_{i}")] for i in HELP
     ]
 
-    await message.reply_text(f"Merhaba **{message.from_user.first_name}**, \nMüziğini indirmek için buradayım..",
+    await message.reply_text(f"Merhaba  **{message.from_user.first_name}**, \nMüziğini indirmek için buradayım..",
                         reply_markup=InlineKeyboardMarkup(button))
 
 @Mbot.on_callback_query(filters.regex(r"help_(.*?)"))
