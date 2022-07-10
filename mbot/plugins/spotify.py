@@ -53,12 +53,12 @@ async def spotify_dl(_,message):
             for item in items:
                 cForChat = await message.reply_chat_action("record_audio")
                 sleeeps = await sleep (0.9)
-                PForCopy = await message.reply_photo(item[5],caption=f"✔️ Episode Name : `{item[3]}`\n🕔 Duration : {item[4]//60}:{item[4]%60}")
+                PForCopy = await message.reply_photo(item[5],caption=f"✔️ Bölüm Adı: `{item[3]}`\n🕔 Süre : {item[4]//60}:{item[4]%60}")
                 fileLink = await ytdl_down(audio_opt(randomdir,item[2]),f"https://open.spotify.com/episode/{item[0]}")
                 thumbnail = await thumb_down(item[5],item[0])
                 sleeping  = await sleep(2.0)
                 DForChat =  await message.reply_chat_action("upload_audio")
-                #reply = await message.reply_text(f"sorry we removed support of  episode 😔 pls send other types")
+                #reply = await message.reply_text("Bölğm desteğini sildim..")
                 AForCopy = await message.reply_audio(fileLink,title=item[3].replace("_"," "),performer="Spotify",duration=int(item[4]),caption=f"[{item[3]}](https://open.spotify.com/episode/{item[0]})",thumb=thumbnail,parse_mode="markdown",quote=True)
                 shutil.rmtree(randomdir)
                 if LOG_GROUP:
@@ -81,7 +81,7 @@ async def spotify_dl(_,message):
             audiofile.tag.track_num = 1
             audiofile.tag.save()
             AForCopy = await message.reply_audio(path,performer=f"{song.get('artist')}",title=f"{song.get('name')} - {song.get('artist')}",caption=f"[{song.get('name')}](https://open.spotify.com/track/{song.get('deezer_id')}) | {song.get('album')} - {song.get('artist')}",thumb=thumbnail, parse_mode="markdown",quote=True)
-            feedback = await message.reply_text(f"Done✅",   
+            feedback = await message.reply_text(f"Tamamlandı..",   
              reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="Feedback", callback_data="feed")]]))
             shutil.rmtree(randomdir)
             if LOG_GROUP:
@@ -108,7 +108,7 @@ async def spotify_dl(_,message):
                 audiofile.tag.track_num = 1
                 audiofile.tag.save()
                 AForCopy = await message.reply_audio(path,performer=song.get('artist'),title=f"{song.get('name')} - {song.get('artist')}",caption=f"[{song.get('name')}](https://open.spotify.com/track/{song.get('deezer_id')}) | {song.get('album')} - {song.get('artist')}",thumb=thumbnail,parse_mode="markdown",quote=True)
-                feedback = await message.reply_text(f"Done✅",   
+                feedback = await message.reply_text(f"Tamamlandı✅",   
                  reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="Feedback", callback_data="feed")]]))
                 shutil.rmtree(randomdir)
                 if LOG_GROUP:
@@ -143,15 +143,15 @@ async def spotify_dl(_,message):
     except Exception as e:
         LOGGER.error(e)
         K = await m.edit_text(e)
-        H = await message.reply_text(f"Done✅",   
+        H = await message.reply_text(f"tamamlandı✅",   
              reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="Error Detected", callback_data="bug")]]))
-        await message.reply_text(f"you can also get it from Saavn type /saavn music_name")
+        await message.reply_text(f"Saavn tipi /saavn music_name")
         await forward(K,H)
 
 @Mbot.on_callback_query(filters.regex(r"feed"))
 async def feedback(_,query):
       await query.message.edit(f"Feedback 🏴‍☠️",
-                  reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="Press here", url="https://t.me/dailychannelsbot?start=spotify_downloa_bot")]]))
+                  reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="Buraya bas", url="https://t.me/dailychannelsbot?start=sp")]]))
 
 @Mbot.on_callback_query(filters.regex(r"bug"))                                                                                                          
 async def bug(_,query):                                                                                                                                  
