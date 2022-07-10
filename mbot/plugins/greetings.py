@@ -32,15 +32,12 @@ from os import execvp,sys
 async def start(client,message):
     reply_markup = [[
         InlineKeyboardButton(
-            text="Bot Channel", url="https://t.me/Spotify_downloa"),
+            text="Kişisel Blog", url="https://t.me/mmagneto3"),
         InlineKeyboardButton(
-            text="Repo",
-            url="https://github.com/Masterolic/Spotify-repo/"),
+            text="Sahip",
+            url="https://t.me/mmagneto"),
         InlineKeyboardButton(text="Help",callback_data="helphome")
-        ],
-        [
-            InlineKeyboardButton(text="Donate",
-            url="https://www.buymeacoffee.com/Masterolic"),
+        ]
         ]]
     if LOG_GROUP:
 
@@ -49,7 +46,7 @@ async def start(client,message):
     if message.chat.type != "private" and message.chat.id not in AUTH_CHATS and message.from_user.id not in SUDO_USERS:
         return await message.reply_text("This Bot Will Not Work In Groups Unless It's Authorized.",
                     reply_markup=InlineKeyboardMarkup(reply_markup))
-    return await message.reply_text(f"Hello {message.from_user.first_name}, I'm a Simple Music Downloader Bot. I Currently Support Download from Youtube.",
+    return await message.reply_text(f"Selamlar {message.from_user.first_name}, ben Spotify playlistlerini indirebileceğin bir botum Yputube ve Deezerdan indirme yapıyorum..",
                     reply_markup=InlineKeyboardMarkup(reply_markup))
 
 @Mbot.on_message(filters.command("restart") & filters.chat(OWNER_ID) & filters.private)
@@ -69,12 +66,9 @@ async def ping(client,message):
     await message.reply_text(f"**Pong!**\nResponse time: `{ms} ms`")
 
 HELP = {
-    "Youtube": "Send **Youtube** Link in Chat to Download Song.",
-    "Spotify": "Send **Spotify** Track/Playlist/Album/Show/Episode's Link. I'll Download It For You.",
-    "Deezer": "Send Deezer Playlist/Album/Track Link. I'll Download It For You.",
-    "Jiosaavn": "Not Implemented yet",
-    "SoundCloud": "Not Implemented yet",
-    "Group": "Will add later."
+    "Youtube": "**Youtube** Video linki yolla.",
+    "Spotify": "**Spotify** Şarkı/Playlist/Album Linki yolla senin için indireceğim..",
+    "Deezer": "Deezer Playlist/Album/Şarkı Linki yolla senin için indireceğim..",
 }
 
 
@@ -91,7 +85,7 @@ async def help(_,message):
 async def helpbtn(_,query):
     i = query.data.replace("help_","")
     button = InlineKeyboardMarkup([[InlineKeyboardButton("Back",callback_data="helphome")]])
-    text = f"Help for **{i}**\n\n{HELP[i]}"
+    text = f"Yardım **{i}**\n\n{HELP[i]}"
     await query.message.edit(text = text,reply_markup=button)
 
 @Mbot.on_callback_query(filters.regex(r"helphome"))
@@ -99,5 +93,5 @@ async def help_home(_,query):
     button = [
         [InlineKeyboardButton(text=i, callback_data=f"help_{i}")] for i in HELP
     ]
-    await query.message.edit(f"Hello **{query.from_user.first_name}**, I'm **@NeedMusicRobot**.\nI'm Here to download your music.",
+    await query.message.edit(f"Merhaba**{query.from_user.first_name}**, \nsnein müziğini indirmek için buradayım.",
                         reply_markup=InlineKeyboardMarkup(button))
