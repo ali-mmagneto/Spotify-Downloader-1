@@ -9,6 +9,7 @@ spotipy
 psutil
 youtube-dl
 ffmpeg
+ffprobe
 python-arq
 aiohttp
 eyed3
