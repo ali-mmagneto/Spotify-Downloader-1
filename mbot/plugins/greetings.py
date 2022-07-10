@@ -40,14 +40,10 @@ async def start(client,message):
             text="Yardım",
             callback_data="helphome")
         ]]
-    if LOG_GROUP:
-
-        invite_link = await client.create_chat_invite_link(chat_id=(int(LOG_GROUP) if str(LOG_GROUP).startswith("-100") else LOG_GROUP))
-        reply_markup.append([InlineKeyboardButton("LOG Channel", url=invite_link.invite_link)])
     if message.chat.type != "private" and message.chat.id not in AUTH_CHATS and message.from_user.id not in SUDO_USERS:
         return await message.reply_text("This Bot Will Not Work In Groups Unless It's Authorized.",
                     reply_markup=InlineKeyboardMarkup(reply_markup))
-    return await message.reply_text(f"Selamlar {message.from_user.first_name}, ben Spotify playlistlerini indirebileceğin bir botum Yputube ve Deezerdan indirme yapıyorum..",
+    return await message.reply_text(f"Selamlar {message.from_user.first_name}, ben Spotify playlistlerini indirebileceğin bir botum Youtube ve Deezerdan indirme yapıyorum..",
                     reply_markup=InlineKeyboardMarkup(reply_markup))
 
 @Mbot.on_message(filters.command("restart") & filters.chat(OWNER_ID) & filters.private)
@@ -85,7 +81,7 @@ async def help(_,message):
 @Mbot.on_callback_query(filters.regex(r"help_(.*?)"))
 async def helpbtn(_,query):
     i = query.data.replace("help_","")
-    button = InlineKeyboardMarkup([[InlineKeyboardButton("Back",callback_data="helphome")]])
+    button = InlineKeyboardMarkup([[InlineKeyboardButton("Geri",callback_data="helphome")]])
     text = f"Yardım **{i}**\n\n{HELP[i]}"
     await query.message.edit(text = text,reply_markup=button)
 
