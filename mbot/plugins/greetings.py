@@ -36,7 +36,9 @@ async def start(client,message):
         InlineKeyboardButton(
             text="Sahip",
             url="https://t.me/mmagneto"),
-        InlineKeyboardButton(text="Yardım",callback_data="helphome")
+        InlineKeyboardButton(
+            text="Yardım",
+            callback_data="helphome")
         ]]
     if LOG_GROUP:
 
@@ -77,7 +79,7 @@ async def help(_,message):
         [InlineKeyboardButton(text=i, callback_data=f"help_{i}")] for i in HELP
     ]
 
-    await message.reply_text(f"Hello **{message.from_user.first_name}**, I'm **@spotify_downloa_bot**.\nI'm Here to download your music.",
+    await message.reply_text(f"Merhaba **{message.from_user.first_name}**, \nMüziğini indirmek için buradayım..",
                         reply_markup=InlineKeyboardMarkup(button))
 
 @Mbot.on_callback_query(filters.regex(r"help_(.*?)"))
