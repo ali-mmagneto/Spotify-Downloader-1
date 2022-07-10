@@ -36,8 +36,7 @@ async def start(client,message):
         InlineKeyboardButton(
             text="Sahip",
             url="https://t.me/mmagneto"),
-        InlineKeyboardButton(text="Help",callback_data="helphome")
-        ]
+        InlineKeyboardButton(text="Yardım",callback_data="helphome")
         ]]
     if LOG_GROUP:
 
